@@ -1,12 +1,10 @@
+
 n = int(input())
 l = []
-b = 0
-sum = 0
 for i in range(n):
-    a = int(input())
-    sum = b + a
-    b = a
-    l.append(sum)
-    sum = 0
-del l[0]
-print(l)
+    c = input()
+    l.append(c)
+s = input()
+for i in range(len(l)):
+    if s.lower() in l[i].lower():
+        print(l[i])
