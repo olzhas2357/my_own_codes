@@ -12,6 +12,7 @@ def convert_grade(grade):
     else:
         result = 1
 
+
     return result
 grade = int(input())
 print(convert_grade(grade))
