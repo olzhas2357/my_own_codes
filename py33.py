@@ -7,3 +7,22 @@ def quick_merge():
 
 if __name__== "__main__":
     quick_merge()
+
+# объявление функции
+def is_prime(num):
+    ok = True
+    if num == 1:
+        ok = False
+    else:
+        for i in range(2, num - 1):
+            if num % i == 0:
+                ok = False
+                break
+    if ok:
+        return "True"
+    else:
+        return "False"
+
+n = int(input())
+
+print(is_prime(n))
