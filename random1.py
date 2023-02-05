@@ -5,16 +5,19 @@ def is_valid(n):
         return False
 import random
 ran_value = random.randint(0, 100)
+
 print("Компьютер загадал число от 0 до 100 и у вас 10 попыток чтобы отгадать число."
       + "Если вы неправильно введите чисел, [ты проиграешь]")
-n = int(input("Введите число: "))
+k = input("Ваше имя: ")
+n = int(input("Нам нужно определить какую числу вы загадали : "))
+
 for i in range(1, 11):
     if is_valid(n) == True:
-        n = int(input())
+        n = int(input(f"{k} пишите тут :) "))
         if n > ran_value:
-            print("Много :)")
+            print(f"{k} Много :)")
         elif n < ran_value:
-            print("Мало :)")
+            print(f"{k} Мало :)")
         else:
             print(f"Ты угадал :) {i + 1} - ой попытка ")
         print(f"Вам осталось {10 - i - 1} попыток :-)")
