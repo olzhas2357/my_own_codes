@@ -28,8 +28,8 @@ class Profession:
             self.work = 'In company'
             print('You need to internship 6 month')
 print('Find out which university is better than your profession :)')
-print('Coder', 'Management', 'Teacher', 'Doctor')
-s = input()
+m = input("What is your name: ")
+s = input(f"{m} choose from one of them: [Coder, Management, Teacher, Doctor]")
 k = Profession(s)
 k.action()
 print("This is best university in Kz")
