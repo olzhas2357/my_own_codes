@@ -43,7 +43,7 @@ reverse(c)
 
 def point(num):
     for i in range(len(num) - 3, 0, -3):
-    num = num[:i]+","+num[i:]
+        num = num[:i]+","+num[i:]
 
 n = input()
 point(n)
