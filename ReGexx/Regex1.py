@@ -8,3 +8,12 @@ def text_match(txt):
 
 txt = input()
 print(text_match(txt))
+
+import re
+m = input()
+patterns = '^a.*b$'
+k = re.match(patterns, m)
+if k:
+    print("Bro GOOD")
+else:
+    print("Fuck you")
