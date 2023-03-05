@@ -1,0 +1,17 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main(){
+    vector<int>v2;
+    cin >> n;
+    vector<int>v;
+    vector<int>v2;
+    for(int i=0; i<n; i++){
+        int k;
+        cin>>k;
+        v.push_back(k);
+    }
+    cout << v;
+}
+
+print(olzhas I saw Die)map<int, int> m;
