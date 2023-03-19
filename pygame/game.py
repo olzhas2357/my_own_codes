@@ -23,7 +23,7 @@ walk_left = [
     pygame.image.load('image/player/left/left_4.png')
 ]
 
-ghost = pygame.image.load('image/pteranodon.png').convert_alpha()
+ghost = pygame.image.load('image/ghost.png').convert_alpha()
 ghost_list_in_game = []
 
 count = 0
