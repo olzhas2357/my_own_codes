@@ -3,10 +3,10 @@ from copy import deepcopy
 from random import choice, randrange
 
 
-W, H = 10, 13
+W, H = 10, 16
 TILE = 45
 GAME_RES = W * TILE, H * TILE
-RES = 750, 700
+RES = 750, 850
 FPS = 60
 
 icon = pygame.image.load("image/icon.png")
@@ -40,8 +40,13 @@ main_font = pygame.font.Font('font/font.ttf', 65)
 font = pygame.font.Font('font/font.ttf', 45)
 
 title_tetris = main_font.render("TETRIS", True, pygame.Color('darkorange'))
+title_score = font.render('score: ', True, pygame.Color('green'))
+title_record = font.render('record: ', True, pygame.Color('blue'))
 
 get_color = lambda : (randrange(30, 256), randrange(30, 256), randrange(30, 256))
+
+score, lines = 0, 0
+scores = {0: 0, 1: 100, 2:300, 3:700, 4:1500}
 
 figure, next_figure = deepcopy(choice(figures)), deepcopy(choice(figures))
 color, next_color = get_color(), get_color()
@@ -53,11 +58,29 @@ def check_borders():
         return False
     return True
 
+def get_record():
+    try:
+        with open('record') as f:
+            return f.readline()
+    except FileNotFoundError:
+        with open('record', 'w') as f:
+            f.write('0')
+
+def set_record(record2, score):
+    rec = max(int(record2), score)
+    with open('record', 'w') as f:
+        f.write(str(rec))
+
+
 while True:
     dx, rotate = 0, False
+    record = get_record()
     sc.blit(bg, (0, 0))
     sc.blit(game_sc, (50, 50))
     game_sc.blit(game_bg, (0, 0))
+
+    for i in range(lines):
+        pygame.time.wait(200)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -108,7 +131,7 @@ while True:
                 figure = deepcopy(figure_old)
                 break
 
-    line = H - 1
+    line, lines = H - 1, 0
     for row in range(H-1, -1, -1):
         count = 0
         for i in range(W):
@@ -117,6 +140,11 @@ while True:
             field[line][i] = field[row][i]
         if count < W:
             line -= 1
+        else:
+            anim_speed += 3
+            lines += 1
+
+    score += scores[lines]
 
     [pygame.draw.rect(game_sc, (40, 40, 40), i_rect, 1) for i_rect in grid]
 
@@ -137,6 +165,21 @@ while True:
         pygame.draw.rect(sc, next_color, figure_rect)
 
 
-    sc.blit(title_tetris, (485, 40))
+    sc.blit(title_tetris, (485, 40))    sc.blit(title_score, (535, 500))
+    sc.blit(title_record, (535, 600))
+    sc.blit(font.render(str(score), True, pygame.Color('white')), (550, 550))
+    sc.blit(font.render(str(record), True, pygame.Color('white')), (550, 550))
+
+    for i in range(W):
+        if field[0][i]:
+            set_record(int(record), score)
+            field = [[0 for i in range(W)] for i in range(H)]
+            anim_count, anim_speed, anim_limit = 0, 60, 2000
+            score = 0
+            for i_rect in grid:
+                pygame.draw.rect(game_sc, get_color(), i_rect)
+                sc.blit(game_sc, (20, 20))
+                pygame.display.flip()
+                clock.tick(200)
     pygame.display.flip()
     clock.tick(FPS)
