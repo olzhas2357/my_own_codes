@@ -165,7 +165,8 @@ while True:
         pygame.draw.rect(sc, next_color, figure_rect)
 
 
-    sc.blit(title_tetris, (485, 40))    sc.blit(title_score, (535, 500))
+    sc.blit(title_tetris, (485, 40))
+    sc.blit(title_score, (535, 500))
     sc.blit(title_record, (535, 600))
     sc.blit(font.render(str(score), True, pygame.Color('white')), (550, 550))
     sc.blit(font.render(str(record), True, pygame.Color('white')), (550, 550))
