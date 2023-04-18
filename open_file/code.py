@@ -1,9 +1,9 @@
-#
-# f = open('rawdata.txt', mode = 'r')
-# s = f.readlines()
-# print(s)
-# f.close()
-#
+
+f = open('Zhanibek/rawdata.txt', mode ='r')
+s = f.readlines()
+print(s)
+f.close()
+
 # with open('rawdata.txt', mode = 'r') as f:
 #     print(f.readlines())
 
@@ -42,17 +42,25 @@ import os
 # except ZeroDivisionError as err:
 #     print("No no error", err)
 
+#
+#
+# try:
+#     number = 5
+#     div = input()
+#     if not div.isdigit():
+#         raise ValueError('No no number')
+#
+# except (ValueError, ZeroDivisionError) as err:
+#     print("без комментариев")
+# else:
+#     print("без ошибок")
+# finally:
+#     print("Finally block")
 
 
-try:
-    number = 5
-    div = input()
-    if not div.isdigit():
-        raise ValueError('No no number')
 
-except (ValueError, ZeroDivisionError) as err:
-    print("без комментариев")
-else:
-    print("без ошибок")
-finally:
-    print("Finally block")
+import time
+
+print("Printed immediately.")
+time.sleep(25)
+print("Printed after 2.4 seconds.")

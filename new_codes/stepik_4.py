@@ -213,3 +213,27 @@ import json
 # print(obj, type(obj))
 
 
+from decimal import*
+# num = Decimal('10.0')
+# print(num.sqrt())
+# print(num.ln())
+# print(num.exp())
+# print(num.log10())
+# num1 = Decimal(1.4568123546)
+# num2 = Decimal(0.1654551651)
+# print(num1.as_tuple())
+# print(num2.as_tuple())
+
+from decimal import *
+
+# num = Decimal('-1.4568769017')
+# num_tuple = num.as_tuple()
+#
+# print(num_tuple.sign)
+# print(num_tuple.digits)
+# print(num_tuple.exponent)
+
+s = '0.77 4.03 9.06 3.80 7.08 5.88 0.23 4.65 2.79 0.90 4.23 2.15 3.24 8.57 0.10 8.57 1.49 5.64 3.63 8.36 1.56 6.67 1.46 5.26 4.83 7.23 1.22 1.02 7.82 9.97 5.40 9.79 9.82 2.78 2.96 0.07 1.72 7.24 7.84 9.23 1.71 6.24 5.78 5.37 0.03 9.60 8.86 2.73 5.83 6.50'
+num1 = max(s)
+num2 = min(s)
+print(num1 + num2)

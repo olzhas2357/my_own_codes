@@ -44,6 +44,11 @@ for i in range(9):
     explosion_anim['lg'].append(img_lg)
     img_sm = pygame.transform.scale(img, (32, 32))
     explosion_anim['sm'].append(img_sm)
+    filename2 = 'sonicExplosion0{}.png'.format(i)
+    img = pygame.image.load(f"image/sonic/{filename2}").convert()
+    img.set_colorkey(BLACK)
+    # explosion_anim['player'].append(img)
+
 font_name = pygame.font.match_font('arial')
 
 def newmob():
@@ -79,6 +84,7 @@ class Pow(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = center
         self.speedy = 2
+
     def update(self):
         self.rect.y += self.speedy
         if self.rect.top > height:
@@ -130,7 +136,6 @@ class Player(pygame.sprite.Sprite):
         self.power_time = pygame.time.get_ticks()
 
     def update(self):
-
         if self.power >= 2 and pygame.time.get_ticks() - self.power_time > POWERUP_TIME:
             self.power -= 1
             self.power_time = pygame.time.get_ticks()
@@ -176,6 +181,7 @@ class Player(pygame.sprite.Sprite):
                 all_sprites.add(bullet2)
                 bullets.add(bullet1)
                 bullets.add(bullet2)
+
     def hide(self):
         # временно скрыть игрока
         self.hidden = True
